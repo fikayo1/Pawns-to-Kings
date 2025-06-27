@@ -1,7 +1,0 @@
-1. Use the pwd command to check your current working directory.
-2. Use the mkdir command to create a new folder "Introduction-to-Linux" then create a sub-folder called Part-1-File-and-Directory-Navigation
-3. Use the cd command to check the list of files or subfolders inside the folder 
-4. Under the Part-1-File-and-Directory-Navigation subfolder use the touch command to create a new file "commands.txt"
-5. Use the nano command (nano commands.txt) to add a text/note under the "commands.txt" file       
-6. Click on (Ctrl + X) to exit   
-7. Select Y to save then click Enter   
