@@ -8,7 +8,6 @@ def get_grade(score):
         return "C"
     elif score >= 46:
         return "D"
-            return "C"
     elif score >= 40:
         return "E"
     else:
@@ -64,7 +63,3 @@ def main():
     # Print each student's grade
     for s in students:
         print(f"{s['name']} - Score: {s['score']} - Grade: {get_grade(s['score'])}")
-
-
-if _name_ == "_main_":
-    main()
