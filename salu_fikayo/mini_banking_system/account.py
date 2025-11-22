@@ -1,19 +1,26 @@
 #!/usr/bin/env py
 """This module contains the structure of the account class"""
 
+import json
 from datetime import datetime
 
 
 class Account:
     __number_of_accounts = 0
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, **kwargs) -> None:
         """Initializes every instance of the Account class"""
-        self.name = name
-        self.balance = 0.00
-        self.transactions = []
-        Account.__number_of_accounts += 1
-        self.account_number = 1000 + Account.__number_of_accounts
+        if not kwargs:
+            self.name = name
+            self.balance = 0.00
+            self.transactions = []
+            Account.__number_of_accounts += 1
+            self.account_number = 1000 + Account.__number_of_accounts
+        else:
+            self.name = kwargs.get("name", "")
+            self.balance = kwargs.get("balance", 0.0)
+            self.transactions = kwargs.get("transactions", None)
+            self.account_number = kwargs.get("account_number", None)
 
     def deposit(self, amount: float) -> bool:
         """Adds money to the users account when deposited"""
@@ -49,8 +56,10 @@ class Account:
 
     def to_dict(self):
         """Returns a dictionary of the instance"""
-        dict = self.__dict__
-        return dict
+        accountObj: dict = self.__dict__
+        if accountObj["account_number"]:
+            del accountObj["account_number"]
+        return accountObj
 
     def __str__(self):
         return f"{self.__dict__}"
@@ -61,5 +70,5 @@ acc2 = Account("lawal")
 Output = acc1.deposit(23)
 Output = acc1.deposit(23.34)
 Output = acc1.deposit(34)
-print(acc1.account_number)
+print(json.dumps(acc1.to_dict()))
 print(acc2)
