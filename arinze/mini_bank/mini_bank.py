@@ -13,12 +13,21 @@ def main():
         print("4. Check Balance")
         print("5. Generate Account Report")
         print("6. Exit")
-        choice = input("Choose an option: ")
+        choice = input("Choose an option numerically: ")
         if choice == '1':
             name = input("Enter your name: ")
-            bank.create_account(name)
+            print(f"Confirm account creation for {name}? (y/n): ")
+            confirm = input().lower()
+            if confirm == 'y':
+                bank.create_account(name)
+            else:
+                print("Account creation cancelled.")
         elif choice == '2':
             number = int(input("Enter account number: "))
+            name = input("Type in account name for verification: ").lower()
+            if name != bank.find_account(number).name.lower():
+                print("Account name does not match. Transaction cancelled.")
+                continue
             amount = float(input("Enter amount to deposit: "))
             balance = bank.deposit(number, amount)
             if balance is not None:
@@ -27,6 +36,10 @@ def main():
                 print("Account not found.")
         elif choice == '3':
             number = int(input("Enter account number: "))
+            name = input("Type in account name for verification: ").lower()
+            if name != bank.find_account(number).name.lower():
+                print("Account name does not match. Transaction cancelled.")
+                continue
             amount = float(input("Enter amount to withdraw: "))
             balance = bank.withdraw(number, amount)
             if balance is not None:
@@ -35,6 +48,10 @@ def main():
                 print("Account not found.")
         elif choice == '4':
             number = int(input("Enter account number: "))
+            name = input("Type in account name for verification: ").lower()
+            if name != bank.find_account(number).name.lower():
+                print("Account name does not match. Transaction cancelled.")
+                continue
             account = bank.find_account(number)
             if account:
                 print(f"Current balance: {account.get_balance()}.")
@@ -42,6 +59,10 @@ def main():
                 print("Account not found.")
         elif choice == '5':
             number = int(input("Enter account number: "))
+            name = input("Type in account name for verification: ").lower()
+            if name != bank.find_account(number).name.lower():
+                print("Account name does not match. Transaction cancelled.")
+                continue
             account = bank.find_account(number)
             if account:
                 print(f"Account Report for {account.name} (#{account.number}):")
