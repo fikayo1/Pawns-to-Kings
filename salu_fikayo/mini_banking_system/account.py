@@ -8,16 +8,16 @@ from datetime import datetime
 class Account:
     __number_of_accounts = 0
 
-    def __init__(self, name: str, **kwargs) -> None:
+    def __init__(self, email: str, **kwargs) -> None:
         """Initializes every instance of the Account class"""
         if not kwargs:
-            self.name = name
+            self.email = email
             self.balance = 0.00
             self.transactions = []
             Account.__number_of_accounts += 1
             self.account_number = 1000 + Account.__number_of_accounts
         else:
-            self.name = kwargs.get("name", "")
+            self.email = kwargs.get("email", "")
             self.balance = kwargs.get("balance", 0.0)
             self.transactions = kwargs.get("transactions", None)
             self.account_number = kwargs.get("account_number", None)
@@ -57,8 +57,6 @@ class Account:
     def to_dict(self):
         """Returns a dictionary of the instance"""
         accountObj: dict = self.__dict__
-        if accountObj["account_number"]:
-            del accountObj["account_number"]
         return accountObj
 
     def __str__(self):
