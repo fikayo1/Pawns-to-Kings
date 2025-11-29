@@ -1,0 +1,25 @@
+{
+    "1": {
+        "name": "wqert",
+        "number": 1,
+        "balance": 0.0,
+        "transactions": {}
+    },
+    "2": {
+        "name": "asfdfgh",
+        "number": 2,
+        "balance": 100.0,
+        "transactions": {
+            "1": {
+                "type": "deposit",
+                "amount": 100.0
+            }
+        }
+    },
+    "3": {
+        "name": "aryrisw",
+        "number": 3,
+        "balance": 0.0,
+        "transactions": {}
+    }
+}
