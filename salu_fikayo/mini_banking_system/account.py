@@ -50,12 +50,3 @@ class Account:
 
     def __str__(self):
         return f"{self.__dict__}"
-
-
-# acc1 = Account("salu")
-# acc2 = Account("lawal")
-# Output = acc1.deposit(23)
-# Output = acc1.deposit(23.34)
-# Output = acc1.deposit(34)
-# print(json.dumps(acc1.to_dict()))
-# print(acc2)

@@ -1,5 +1,5 @@
 #!/usr/bin/env py
-""""""
+"""This module contains the logic for the bank class"""
 
 import json
 import os
@@ -9,7 +9,10 @@ from account import Account
 
 
 class Bank:
+    """Establishes the logic for a banking system"""
+
     def __init__(self):
+        """Initializes all bank instances with the specified attributes"""
         self.__data_file = "storage.json"
         if os.path.exists(self.__data_file):
             self.__accounts = self.load_data()
@@ -17,6 +20,9 @@ class Bank:
             self.__accounts = {}
 
     def create_account(self, email: str):
+        """Creates a new account for a user with the specified email
+        but returns "400" if the email already exists
+        """
         if self.__accounts:
             for accounts in self.__accounts.values():
                 if accounts.email == email:
@@ -27,11 +33,13 @@ class Bank:
         return 201
 
     def find_account(self, account_number: int):
+        """Checks if the account exists and returns it if it does"""
         if self.__accounts:
             return self.__accounts.get(account_number)
         return None
 
     def deposit(self, account_number: int, amount: float):
+        """Deposits money to a user's account if the account exists"""
         userAccount = self.find_account(account_number)
         if userAccount:
             result = userAccount.deposit(amount)
@@ -43,6 +51,7 @@ class Bank:
         return 404
 
     def withdraw(self, account_number: int, amount: float):
+        """Withdraws the specified amount from the user's account"""
         userAccount = self.find_account(account_number)
         if userAccount:
             result = userAccount.withdraw(amount)
@@ -54,6 +63,7 @@ class Bank:
         return 404
 
     def save_data(self, account: Account):
+        """Saves any update to the storage file and the accounts dictionary"""
         self.__accounts[account.account_number] = account
         if not os.path.exists(self.__data_file):
             saved_data = {}
@@ -70,6 +80,7 @@ class Bank:
             return 200
 
     def load_data(self):
+        """Loads all account history from the storage file"""
         """Loads all account history from file storage"""
         if os.path.exists(self.__data_file):
             with open(self.__data_file, "r") as f:
@@ -102,8 +113,3 @@ class Bank:
         if user_account:
             return user_account.balance
         return 404
-
-
-python_bank = Bank()
-print(python_bank.check_balance(8542))
-print(python_bank.find_account(8542))

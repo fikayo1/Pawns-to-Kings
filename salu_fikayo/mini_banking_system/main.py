@@ -75,7 +75,7 @@ def start_app():
                             f"The specified amount is more than your current balance of {account.balance}"
                         )
                     else:
-                        print(f"Deposit successful: {status}")
+                        print(f"Withdrawal successful: {status}")
 
                 except (TypeError, ValueError):
                     print(
@@ -113,7 +113,7 @@ def start_app():
 
                 except (TypeError, ValueError):
                     print(
-                        "Please make sure your account number input are numbers. Select option '4' and try again"
+                        "Please make sure your account number input are numbers. Select option '5' and try again"
                     )
 
             case "6":
