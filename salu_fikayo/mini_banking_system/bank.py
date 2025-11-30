@@ -82,13 +82,14 @@ class Bank:
         return {}
 
     def generate_acc_number(self):
-        """Generate account numbers"""
+        """Generate random and unique account numbers for users"""
         while True:
             account_number = random.randint(1000, 9999)
             if account_number not in self.__accounts.keys():
                 return account_number
 
     def generate_statement(self, account_number):
+        """Generates the user's account statement based on transactions made"""
         user_account = self.find_account(account_number)
         if user_account:
             return user_account.transactions
@@ -96,6 +97,7 @@ class Bank:
             return 404
 
     def check_balance(self, account_number):
+        """Returns the user's account balance and 404 if the account does not exist"""
         user_account = self.find_account(account_number)
         if user_account:
             return user_account.balance
