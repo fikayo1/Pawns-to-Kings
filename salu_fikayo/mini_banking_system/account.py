@@ -1,26 +1,16 @@
 #!/usr/bin/env py
 """This module contains the structure of the account class"""
 
-import json
 from datetime import datetime
 
 
 class Account:
-    __number_of_accounts = 0
-
-    def __init__(self, email: str, **kwargs) -> None:
+    def __init__(self, **kwargs) -> None:
         """Initializes every instance of the Account class"""
-        if not kwargs:
-            self.email = email
-            self.balance = 0.00
-            self.transactions = []
-            Account.__number_of_accounts += 1
-            self.account_number = 1000 + Account.__number_of_accounts
-        else:
-            self.email = kwargs.get("email", "")
-            self.balance = kwargs.get("balance", 0.0)
-            self.transactions = kwargs.get("transactions", None)
-            self.account_number = kwargs.get("account_number", None)
+        self.email = kwargs.get("email")
+        self.balance = kwargs.get("balance", 0.0)
+        self.transactions = kwargs.get("transactions", [])
+        self.account_number = kwargs.get("account_number")
 
     def deposit(self, amount: float) -> bool:
         """Adds money to the users account when deposited"""
@@ -32,21 +22,20 @@ class Account:
             }
             self.balance += amount
             self.transactions.append(transaction)
-            return True
+            return transaction
         return False
 
     def withdraw(self, amount: float) -> bool:
         """When the user withdraws money from the account"""
-        if amount is float:
-            if self.balance >= amount:
-                self.balance -= amount
-                transaction = {
-                    "type": "withdrawal",
-                    "amount": amount,
-                    "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                }
-                self.transactions.append(transaction)
-                return True
+        if self.balance > amount:
+            self.balance -= amount
+            transaction = {
+                "type": "withdrawal",
+                "amount": amount,
+                "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            }
+            self.transactions.append(transaction)
+            return transaction
         return False
 
     @property
@@ -63,10 +52,10 @@ class Account:
         return f"{self.__dict__}"
 
 
-acc1 = Account("salu")
-acc2 = Account("lawal")
-Output = acc1.deposit(23)
-Output = acc1.deposit(23.34)
-Output = acc1.deposit(34)
-print(json.dumps(acc1.to_dict()))
-print(acc2)
+# acc1 = Account("salu")
+# acc2 = Account("lawal")
+# Output = acc1.deposit(23)
+# Output = acc1.deposit(23.34)
+# Output = acc1.deposit(34)
+# print(json.dumps(acc1.to_dict()))
+# print(acc2)
