@@ -25,10 +25,10 @@ def start_app():
     python_bank = Bank()
 
     while True:
-        option = float(input(menu))
+        option = input(menu)
 
         match option:
-            case 1:
+            case "1":
                 email = input("Please provide an email: ")
                 status = python_bank.create_account(email)
 
@@ -39,7 +39,7 @@ def start_app():
                         "This email is already in use, please select option '1' and try another email"
                     )
 
-            case 2:
+            case "2":
                 account_number_str = input("Please provide you account number: ")
                 amount_str = input("How much would you like to deposit: ")
                 try:
@@ -59,7 +59,7 @@ def start_app():
                         "Please make sure your amount and account number input are numbers. Select option '2' and try again"
                     )
 
-            case 3:
+            case "3":
                 account_number_str = input("Please provide you account number: ")
                 amount_str = input("How much would you like to withdraw: ")
                 try:
@@ -82,7 +82,7 @@ def start_app():
                         "Please make sure your amount and account number input are numbers. Select option '3' and try again"
                     )
 
-            case 4:
+            case "4":
                 try:
                     account_number = float(
                         input("Please provide your account number: ")
@@ -99,7 +99,7 @@ def start_app():
                         "Please make sure your account number input are numbers. Select option '4' and try again"
                     )
 
-            case 5:
+            case "5":
                 try:
                     account_number = float(
                         input("Please provide your account number: ")
@@ -116,7 +116,7 @@ def start_app():
                         "Please make sure your account number input are numbers. Select option '4' and try again"
                     )
 
-            case 6:
+            case "6":
                 print("Thank you for banking with us")
                 return
 
