@@ -1,0 +1,24 @@
+{
+    "1": {
+        "name": "Ark",
+        "number": 1,
+        "balance": 123456.0,
+        "transactions": {
+            "1": {
+                "type": "deposit",
+                "amount": 123456.0
+            }
+        }
+    },
+    "2": {
+        "name": "Messi",
+        "number": 2,
+        "balance": 90987.0,
+        "transactions": {
+            "1": {
+                "type": "deposit",
+                "amount": 90987.0
+            }
+        }
+    }
+}
