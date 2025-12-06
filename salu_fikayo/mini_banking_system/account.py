@@ -1,0 +1,52 @@
+#!/usr/bin/env py
+"""This module contains the structure of the account class"""
+
+from datetime import datetime
+
+
+class Account:
+    def __init__(self, **kwargs) -> None:
+        """Initializes every instance of the Account class"""
+        self.email = kwargs.get("email")
+        self.balance = kwargs.get("balance", 0.0)
+        self.transactions = kwargs.get("transactions", [])
+        self.account_number = kwargs.get("account_number")
+
+    def deposit(self, amount: float) -> bool:
+        """Adds money to the users account when deposited"""
+        if amount:
+            transaction = {
+                "type": "deposit",
+                "amount": amount,
+                "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            }
+            self.balance += amount
+            self.transactions.append(transaction)
+            return transaction
+        return False
+
+    def withdraw(self, amount: float) -> bool:
+        """When the user withdraws money from the account"""
+        if self.balance > amount:
+            self.balance -= amount
+            transaction = {
+                "type": "withdrawal",
+                "amount": amount,
+                "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            }
+            self.transactions.append(transaction)
+            return transaction
+        return False
+
+    @property
+    def get_balance(self):
+        """Returns the user's account balance"""
+        return self.balance
+
+    def to_dict(self):
+        """Returns a dictionary of the instance"""
+        accountObj: dict = self.__dict__
+        return accountObj
+
+    def __str__(self):
+        return f"{self.__dict__}"

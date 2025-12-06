@@ -1,0 +1,57 @@
+{
+    "4205": {
+        "email": "salu@gmail.com",
+        "balance": 0.0,
+        "transactions": [],
+        "account_number": 4205
+    },
+    "8542": {
+        "email": "salufikayo@gmail.com",
+        "balance": 1e+28,
+        "transactions": [
+            {
+                "type": "deposit",
+                "amount": 100000,
+                "time": "2025-11-30 13:23"
+            },
+            {
+                "type": "withdrawal",
+                "amount": 1000,
+                "time": "2025-11-30 13:28"
+            },
+            {
+                "type": "deposit",
+                "amount": 100.0,
+                "time": "2025-11-30 14:51"
+            },
+            {
+                "type": "deposit",
+                "amount": 200.0,
+                "time": "2025-11-30 14:53"
+            },
+            {
+                "type": "deposit",
+                "amount": 1e+28,
+                "time": "2025-11-30 14:59"
+            },
+            {
+                "type": "withdrawal",
+                "amount": 30000000.0,
+                "time": "2025-11-30 15:44"
+            }
+        ],
+        "account_number": 8542
+    },
+    "2743": {
+        "email": "fikayo@gmail.com",
+        "balance": 0.0,
+        "transactions": [],
+        "account_number": 2743
+    },
+    "1452": {
+        "email": "timi@gmail.com",
+        "balance": 0.0,
+        "transactions": [],
+        "account_number": 1452
+    }
+}
