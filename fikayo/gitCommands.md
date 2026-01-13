@@ -1,0 +1,8 @@
+- git add
+- git commit
+- git push
+- git cherry-pick
+- git rebase
+- git init
+- git stash
+- git reset
